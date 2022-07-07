@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const sauceRoutes = require("./routes/sauce");
 const userRoutes = require("./routes/user");
-
+const dotenv = require("dotenv");
+const result = dotenv.config();
 mongoose
   .connect(
-    "mongodb+srv://new-user72:Créet1base2donné@cluster0.j4qcu8e.mongodb.net/?retryWrites=true&w=majority",
+    `mongodb+srv://new-user72:Créet1base2donné@cluster0.fskbd9g.mongodb.net/SaucesPiquantesDB?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
