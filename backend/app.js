@@ -40,7 +40,7 @@ const limiter = rateLimit({
   legacyHeaders: false, // Désactive les entêtes `X-RateLimit-*` 
 });
 
-
+//ajoit des middlewares à l'api
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/sauces", sauceRoutes);
