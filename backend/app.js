@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 // limiteur de connexion
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limite chaque IP à 100 requêtes par fenêtre (ici, pour 15 minutes)
+  max: 5, // Limite chaque IP à 100 requêtes par fenêtre (ici, pour 15 minutes)
   standardHeaders: true, // Retourne rate limit info dans `RateLimit-*` headers
   legacyHeaders: false, // Désactive les entêtes `X-RateLimit-*` 
 });
@@ -44,7 +44,6 @@ const limiter = rateLimit({
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/sauces", sauceRoutes);
-app.use("/api/auth", userRoutes);
-app.use(limiter);
+app.use("/api/auth",limiter, userRoutes);
 app.use(helmet());
 module.exports = app;
